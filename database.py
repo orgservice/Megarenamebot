@@ -3,11 +3,11 @@ import os
 
 MONGO_URI = os.environ.get(
     "MONGO_URI",
-    "mongodb+srv://vsigsiehvdidod_db_user:LZuzYqhzdiehcHOB@cluster0.6dolbi0.mongodb.net/?appName=Cluster0"
+    "mongodb+srv://imaxprime:imaxprime@entiredatabase.pgyu5ay.mongodb.net/?appName=EntireDatabase"
 )
 
 client = AsyncIOMotorClient(MONGO_URI)
-db = client['MegaRenamerBot']
+db = client['MegaRenamerBots']
 users_collection   = db['users']
 auth_collection    = db['authorised']   # Authorised user IDs
 session_collection = db['sessions']     # MEGA login sessions
@@ -22,8 +22,8 @@ async def add_user(user_id: int):
         await users_collection.insert_one({
             "_id": user_id,
             "lifetime_renamed": 0,
-            "daily_limit": 100,
-            "is_premium": False,
+            "daily_limit": 10000,
+            "is_premium": True,
             "links_checked": 0,
             "language": "en"
         })
